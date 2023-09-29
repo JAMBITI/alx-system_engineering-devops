@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+pidfile="/var/run/myscript.pid"
+echo "$$" > "$pidfile"
+
+cleanup() {
+  rm "$pidfile"
+  echo "Goodbye!"
+  exit
+}
+
+trap cleanup EXIT
+
+while true; do
+  echo "To infinity and beyond"
+  sleep 2
+done
