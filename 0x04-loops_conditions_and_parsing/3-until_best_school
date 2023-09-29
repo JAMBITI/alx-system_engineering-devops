@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# this script print "Best School" 10 times using until loop
 i=0
 until [ $i -eq 10 ]
 do
