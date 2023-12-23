@@ -1,0 +1,30 @@
+# Reset existing rules to default settings
+ufw --force reset
+
+# Set default policies
+ufw default deny incoming
+ufw default allow outgoing
+
+# Allow loopback traffic
+ufw allow in on lo
+ufw allow out on lo
+
+# Allow established and related traffic
+ufw allow in proto tcp from any to any port 8080
+ufw allow out to any
+
+# Allow ICMP traffic
+ufw allow in proto icmp
+
+# Allow DHCP client
+ufw allow out proto udp to 255.255.255.255 port 67:68
+
+# Allow multicast mDNS for service discovery
+ufw allow in proto udp to 224.0.0.251 port 5353
+
+# Allow multicast UPnP for service discovery
+ufw allow in proto udp to 239.255.255.250 port 1900
+
+# Enable logging of denied packets
+ufw logging on
+ufw enable
